@@ -1,0 +1,5 @@
+<project>
+  <target name="archive">
+    <zip destfile="build_results.zip" basedir="." />
+  </target>
+</project>
