@@ -3,6 +3,7 @@
     <zip
       destfile="build_results.zip"
       basedir="." 
-      excludes="build.xml" />
+      excludes="./build.xml" 
+    />
   </target>
 </project>
