@@ -1,5 +1,8 @@
 <project>
   <target name="archive">
-    <zip destfile="build_results.zip" basedir="." />
+    <zip
+      destfile="build_results.zip"
+      basedir="." 
+      excludes="build.xml" />
   </target>
 </project>
