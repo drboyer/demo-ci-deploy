@@ -14,6 +14,6 @@
         <tarfileset prefix="/test/bin" file="bin/*.pl" username="op" group="op" filemode="755" />
         <tarfileset prefix="/test/config" file="config/*" username="op" group="op" />
     </redline-rpm>
-    <concat destfile="BUILD_VERSION">${buildversion}</concat>
+    <concat destfile="RELEASE_VERSION">${buildversion}</concat>
   </target>
 </project>
