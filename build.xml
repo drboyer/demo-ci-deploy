@@ -1,9 +1,19 @@
 <project>
+  <taskdef name="redline-rpm" classname="org.redline_rpm.ant.RedlineTask" classpath="lib/redline-1.2.2-jar-with-dependencies.jar" />
+  <property name="buildversion">0.0.5</property>
   <target name="archive">
     <zip
       destfile="build_results.zip"
       basedir="." 
       excludes="build.xml, build_results.zip" 
     />
+  </target>
+  <target name="rpmbuild">
+    <mkdir dir="rpms" />
+    <redline-rpm group="Development Tools" name="demo-ci-deploy" version="${buildversion}" destination="rpms">
+        <tarfileset prefix="/test/bin" file="bin/*.pl" username="op" group="op" filemode="755" />
+        <tarfileset prefix="/test/config" file="config/*" username="op" group="op" />
+    </redline-rpm>
+    <concat destfile="BUILD_VERSION">${buildversion}</concat>
   </target>
 </project>
