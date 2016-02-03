@@ -1,6 +1,7 @@
 <project>
   <taskdef name="redline-rpm" classname="org.redline_rpm.ant.RedlineTask" classpath="lib/redline-1.2.2-jar-with-dependencies.jar" />
   <property name="buildversion">0.0.5</property>
+  <property environment="env" />
   <target name="archive">
     <zip
       destfile="build_results.zip"
@@ -14,6 +15,9 @@
         <tarfileset prefix="/test/bin" file="bin/*.pl" username="op" group="op" filemode="755" />
         <tarfileset prefix="/test/config" file="config/*" username="op" group="op" />
     </redline-rpm>
-    <concat destfile="RELEASE_VERSION">${buildversion}</concat>
+    <concat destfile="DEPLOY_INFO">
+      ${buildversion}
+      ${env.WORKSPACE}/rpms/demo-ci-deploy-${buildversion}-1.noarch.rpm
+    </concat>
   </target>
 </project>
