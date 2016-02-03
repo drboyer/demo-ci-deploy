@@ -16,8 +16,8 @@
         <tarfileset prefix="/test/config" file="config/*" username="op" group="op" />
     </redline-rpm>
     <concat destfile="DEPLOY_INFO">
-      ${buildversion}
-      ${env.WORKSPACE}/rpms/demo-ci-deploy-${buildversion}-1.noarch.rpm
+version=${buildversion}
+asset_path=${env.WORKSPACE}\rpms\demo-ci-deploy-${buildversion}-1.noarch.rpm
     </concat>
   </target>
 </project>
