@@ -1,6 +1,5 @@
 <project>
   <taskdef name="redline-rpm" classname="org.redline_rpm.ant.RedlineTask" classpath="lib/redline-1.2.2-jar-with-dependencies.jar" />
-  <property name="buildversion">0.0.5</property>
   <property environment="env" />
   <target name="archive">
     <zip
@@ -11,13 +10,14 @@
   </target>
   <target name="rpmbuild">
     <mkdir dir="rpms" />
-    <redline-rpm group="Development Tools" name="demo-ci-deploy" version="${buildversion}" destination="rpms">
+    <redline-rpm group="Development Tools" name="demo-ci-deploy" version="0.0.${env.BUILD_NUMBER}" destination="rpms">
         <tarfileset prefix="/test/bin" file="bin/*.pl" username="op" group="op" filemode="755" />
         <tarfileset prefix="/test/config" file="config/*" username="op" group="op" />
     </redline-rpm>
     <concat destfile="DEPLOY_INFO">
-version="${buildversion}"
-asset_path="${env.WORKSPACE}\rpms\demo-ci-deploy-${buildversion}-1.noarch.rpm"
+version="0.0.${env.BUILD_NUMBER}"
+asset_path="${env.WORKSPACE}\rpms\demo-ci-deploy-0.0.${env.BUILD_NUMBER}-1.noarch.rpm"
     </concat>
+    <concat destfile="rpms/LATEST">demo-ci-deploy-0.0.${env.BUILD_NUMBER}-1.noarch.rpm</concat>
   </target>
 </project>
