@@ -10,14 +10,15 @@
   </target>
   <target name="rpmbuild">
     <mkdir dir="rpms" />
-    <redline-rpm group="Development Tools" name="demo-ci-deploy" version="0.0.${env.BUILD_NUMBER}" destination="rpms">
+    <redline-rpm group="Development Tools" name="demo-ci-deploy" version="0.0.${env.demo_ci_deploy:build_number}" destination="rpms">
         <tarfileset prefix="/test/bin" file="bin/*.pl" username="op" group="op" filemode="755" />
         <tarfileset prefix="/test/config" file="config/*" username="op" group="op" />
     </redline-rpm>
     <concat destfile="DEPLOY_INFO">
-version="0.0.${env.BUILD_NUMBER}"
-asset_path="${env.WORKSPACE}\rpms\demo-ci-deploy-0.0.${env.BUILD_NUMBER}-1.noarch.rpm"
+version="0.0.${env.demo_ci_deploy:build_number}"
+asset_path="${env.WORKSPACE}\rpms\demo-ci-deploy-0.0.${env.demo_ci_deploy:build_number}-1.noarch.rpm"
     </concat>
-    <concat destfile="rpms/LATEST">demo-ci-deploy-0.0.${env.BUILD_NUMBER}-1.noarch.rpm</concat>
+    <concat destfile="rpms/LATEST">demo-ci-deploy-0.0.${env.demo_ci_deploy:build_number}-1.noarch.rpm</concat>
+    <concat destfile="BUILD_NUMBER">${env.demo_ci_deploy:build_number}</concat>
   </target>
 </project>
