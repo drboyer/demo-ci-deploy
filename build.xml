@@ -9,7 +9,7 @@
     />
   </target>
   <target name="buildnumber">
-    <exec executable="python">
+    <exec executable="C:\Python27\python">
         <arg value="C:\Users\Administrator\helpers\get_s3_buildnum.py" />
         <arg value="demo-ci-deploy" />
         <arg value="${env.WORKSPACE}\BUILD_NUMBER" />
