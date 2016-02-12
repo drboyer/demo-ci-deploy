@@ -12,11 +12,11 @@
     <exec executable="C:\Python27\python">
         <arg value="C:\Users\Administrator\helpers\get_s3_buildnum.py" />
         <arg value="demo-ci-deploy" />
-        <arg value="${env.WORKSPACE}\BUILD_NUMBER" />
+        <arg value="${env.WORKSPACE}\buildnumber.prop" />
     </exec>
   </target>
   <target name="rpmbuild">
-    <property file="${env.WORKSPACE}\BUILD_NUMBER" />
+    <property file="${env.WORKSPACE}\buildnumber.prop" />
     <mkdir dir="rpms" />
     <redline-rpm group="Development Tools" name="demo-ci-deploy" version="0.0.${build_number}" destination="rpms">
         <tarfileset prefix="/test/bin" file="bin/*.pl" username="op" group="op" filemode="755" />
