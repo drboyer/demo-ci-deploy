@@ -20,7 +20,7 @@
     <mkdir dir="rpms" />
     <redline-rpm group="Development Tools" name="demo-ci-deploy" version="0.0.${build_number}" destination="rpms">
         <tarfileset prefix="/test/bin" file="bin/*.pl" username="op" group="op" filemode="755" />
-        <tarfileset prefix="/test/bin" file="bin/**" username="op" group="op" />
+        <tarfileset prefix="/test/bin" file="bin/**.pl" username="op" group="op" filemode="755" />
         <tarfileset prefix="/test/config" file="config/*" username="op" group="op" />
     </redline-rpm>
     <concat destfile="DEPLOY_INFO">
